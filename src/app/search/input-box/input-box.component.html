@@ -1,0 +1,4 @@
+<div>
+  <input type="text" [value]="query" [formControl]="queryControl" (keyup.enter)="fireQueryChangeEvent()">
+  <button *ngIf="fireChangeType==='manual'" (click)="fireQueryChangeEvent()">search</button>
+</div>

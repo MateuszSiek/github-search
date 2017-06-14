@@ -1,0 +1,6 @@
+<div>
+  <span *ngFor="let sortField of sortFields" (click)="setSortField(sortField.field)">
+  <i class="fa fa-lg {{getSortIcon(sortField.field)}}"></i>
+  <span>{{sortField.display}}</span>
+  </span>
+</div>
