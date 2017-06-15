@@ -1,0 +1,15 @@
+<div>
+  <div class="header">
+    <h2>
+      {{repository?.title}}
+    </h2>
+    <span *ngIf="date">
+      Created: {{repository?.date | date:'yMMMd'}}
+    </span>
+  </div>
+  <div class="body">
+    <p>
+      {{repository?.description}}
+    </p>
+  </div>
+</div>
