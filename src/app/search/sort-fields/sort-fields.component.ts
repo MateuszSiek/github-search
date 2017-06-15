@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 
-import {SortInputField, SortObject, Direction} from "../interfaces/sort";
+import {SortInputField, SortObject, Direction} from "../models/sort";
 
 @Component({
   selector: 'app-sort-fields',
