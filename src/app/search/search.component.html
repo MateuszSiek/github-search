@@ -1,2 +1,2 @@
-<app-input-box (queryChange)="setQueryString($event)"></app-input-box>
+<app-input-box (queryChange)="setQueryString($event)" [fireChangeType]="fireChangeType"></app-input-box>
 <app-sort-fields (sortChange)="setSort($event)" [sortFields]="sortFields"></app-sort-fields>

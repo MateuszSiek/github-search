@@ -1,3 +1,4 @@
 <!--The whole content below can be removed with the new code.-->
-<app-search></app-search>
-<!-- <app-result-card></app-result-card> -->
+<app-search (queryChange)="setQueryData($event)"></app-search>
+<app-result-card *ngFor="let repository of repositories" [repository]="repository"></app-result-card>
+<app-paginator [recordsCount]="repositoriesCount" [pageSize]="10" (pageChange)="setPage($event)"></app-paginator>

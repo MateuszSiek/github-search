@@ -1,23 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule, JsonpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 
 import { SearchModule } from "./search/search.module";
 import { ResultCardModule } from "./result-card/result-card.module";
-import { RepositoryDetailsComponent } from './repository-card/repository-details/repository-details.component';
+import { PaginatorModule } from "./paginator/paginator.module";
+
+import {SearchRepositoryService} from "./services/search-repository.service";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RepositoryDetailsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    JsonpModule,
     SearchModule,
-    ResultCardModule
+    ResultCardModule,
+    PaginatorModule
   ],
-  providers: [],
+  providers: [SearchRepositoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
