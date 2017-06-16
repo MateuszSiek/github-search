@@ -1,0 +1,8 @@
+.page-label {
+  margin: 5px;
+  background: red;
+}
+
+.page-label.active {
+  background: blue;
+}

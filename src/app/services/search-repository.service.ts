@@ -4,49 +4,56 @@ import { Jsonp, URLSearchParams } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 
 import { Observable }       from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
 
 
 import { SearchResult } from "../shared/models/search-result";
+import { RequestError } from "../shared/models/request-error";
 
 import { QueryData } from "../search/models/query-data";
+
+import { GlobalConfig } from "../shared/global-config"
 
 @Injectable()
 export class SearchRepositoryService {
 
   constructor(private http: Http, private jsonp: Jsonp) { }
 
-  getRepositories(queryData: QueryData): Observable<SearchResult> {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+  getRepositories({query, sort, page}): Observable<SearchResult> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
 
-    let params: URLSearchParams = new URLSearchParams();
-    params.set('q', queryData.query);
-    params.set('per_page', '10');
-    params.set('page', queryData.page.toString());
+    if (query.length <= 0) {
+      const emptyResponse: SearchResult = this.getEmptySearchResultObject();
+      return Observable.of<SearchResult>(emptyResponse);
+    }
 
-    console.log(params);
+    const params: URLSearchParams = new URLSearchParams();
+    params.set('q', query);
+    params.set('per_page', GlobalConfig.REPOSITORIES_PER_PAGE.toString());
+    params.set('page', page.toString());
 
-    let options = new RequestOptions({ headers: headers, search: params });
-    return this.http.get('https://api.github.com/search/repositories', options)
+    const options = new RequestOptions({ headers: headers, search: params });
+    return this.http.get(GlobalConfig.GITHUB_API_URL + '/search/repositories', options)
       .map((res: Response) => res.json())
-      .catch(this.handleError);
+      .catch((error: Response) => this.handleError(error));
   }
 
   private handleError(error: Response | any) {
     const body = error.json() || '';
     const errMsg = body.message || JSON.stringify(body);
-    let requestError: {
-      code: number;
-      statusText: string;
-      msg: string;
-    } = {
-        code: error.status,
-        statusText: error.statusText,
-        msg: errMsg
-      }
+    const requestError: RequestError = {
+      code: error.status,
+      statusText: error.statusText,
+      msg: errMsg
+    }
+    const emptyResponse: SearchResult = this.getEmptySearchResultObject();
+    emptyResponse.error = requestError;
+    return Observable.of<SearchResult>(emptyResponse);
+  }
 
-    console.error(errMsg);
-    return Observable.of<any>(errMsg);
+  private getEmptySearchResultObject(): SearchResult {
+    return {
+      total_count: 0,
+      items: []
+    }
   }
 }

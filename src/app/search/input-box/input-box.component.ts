@@ -12,7 +12,7 @@ import 'rxjs/add/observable/fromEvent';
   styleUrls: ['./input-box.component.css']
 })
 export class InputBoxComponent implements OnInit {
-  @Input() fireChangeType: 'manual' | 'auto' = 'manual';
+  @Input() searchInputMethod: 'manual' | 'auto' = 'manual';
   @Input() debounceTime: number = 200;
   @Output() queryChange: EventEmitter<string> = new EventEmitter<string>();
 
@@ -29,7 +29,7 @@ export class InputBoxComponent implements OnInit {
 
   inputChanged(newValue: string) {
     this.query = newValue;
-    if (this.fireChangeType === 'auto') {
+    if (this.searchInputMethod === 'auto') {
       this.fireQueryChangeEvent();
     }
   }

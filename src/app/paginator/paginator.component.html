@@ -1,0 +1,9 @@
+<div>
+  <button href="#" (click)="changePageTo(1)" [disabled]="currentPage === 1">first</button>
+  <button href="#" (click)="changePageTo(currentPage-1)" [disabled]="currentPage === 1">prev</button>
+  <span>
+  <button href="#" [class.active]="currentPage === page" class="page-label" *ngFor="let page of visiblePages" (click)="changePageTo(page)"> {{page}} </button>
+</span>
+  <button href="#" (click)="changePageTo(currentPage+1)" [disabled]="currentPage === availablePagesCount">next</button>
+  <button href="#" (click)="changePageTo(availablePagesCount)" [disabled]="currentPage === availablePagesCount">last</button>
+</div>

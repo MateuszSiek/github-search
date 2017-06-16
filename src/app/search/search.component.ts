@@ -1,39 +1,41 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { SortInputField, SortObject, Direction } from "./models/sort";
 import { QueryData } from "./models/query-data";
-
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
-  @Input() queryFieldName: string = 'q';
-  @Input() fireChangeType: 'manual' | 'auto' = 'manual';
-  @Input() debounceTime: number = 200;
-  @Input() sortFields: SortInputField[];
-  @Output() queryChange: EventEmitter<QueryData> = new EventEmitter<QueryData>();
+export class SearchComponent {
+  @Input() public queryFieldName: string = 'q';
+  @Input() public searchInputMethod: 'manual' | 'auto' = 'manual';
+  @Input() public debounceTime: number = 200;
+  @Input() public sortFields: SortInputField[];
+  @Output() public queryChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() public sortChange: EventEmitter<SortObject> = new EventEmitter<SortObject>();
 
-  private queryData: QueryData = { query: '', sort: null, page: 1 };
-  // private sort: sting;
+  private query: string = '';
+  private sort: SortObject;
+
   constructor() { console.log(this); }
 
-  ngOnInit() {
+  private fireQueryChange() {
+    this.queryChange.emit(this.query);
   }
 
-  setSort(value: SortObject) {
-    this.queryData.sort = value;
-    this.fireQueryChange();
-  }
-  setQueryString(value: string) {
-    this.queryData.query = value;
-    this.queryData.page = 1;
-    this.fireQueryChange();
+  private fireSortChange() {
+    this.sortChange.emit(this.sort);
   }
 
-  fireQueryChange() {
-    this.queryChange.emit(this.queryData);
+  private setSort(value: SortObject) {
+    this.sort = value;
+    this.fireSortChange();
+  }
+
+  private setQueryString(value: string) {
+    this.query = value;
+    this.fireQueryChange();
   }
 }
