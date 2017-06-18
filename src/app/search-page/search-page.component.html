@@ -1,0 +1,8 @@
+<!--The whole content below can be removed with the new code.-->
+<div class="main-container">
+  <app-search (queryChange)="updateSearchQuery($event)" (sortChange)="updateSearchSort($event)" [searchInputMethod]="searchInputMethod"></app-search>
+  <div *ngIf="displayResults()">
+    <app-result-card *ngFor="let repository of repositories" [repository]="repository"></app-result-card>
+    <app-paginator [recordsCount]="repositoriesCount" [pageSize]="10" (pageChange)="setPage($event)"></app-paginator>
+  </div>
+</div>

@@ -10,16 +10,15 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 
+import { AppRoutingModule } from './app-routing.module';
 
 import { SharedModule } from "./shared/shared.module";
-import { PaginatorModule } from "./paginator/paginator.module";
-import { ResultCardModule } from "./result-card/result-card.module";
-import { SearchModule } from "./search/search.module";
+import { SearchPageModule } from "./search-page/search-page.module";
+import { AboutPageModule } from "./about-page/about-page.module";
 
 
 import { AppComponent } from './app.component';
 
-import {GithubApiService} from "./services/github-api.service";
 
 @NgModule({
   declarations: [
@@ -28,11 +27,10 @@ import {GithubApiService} from "./services/github-api.service";
   imports: [
     BrowserModule,
     HttpModule,
-    PaginatorModule,
-    ResultCardModule,
-    SearchModule
+    AppRoutingModule,
+    SearchPageModule,
+    AboutPageModule
   ],
-  providers: [GithubApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
