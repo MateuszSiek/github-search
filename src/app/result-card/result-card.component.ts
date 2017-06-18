@@ -15,6 +15,7 @@ export class ResultCardComponent implements OnInit {
   private readme: string;
   private weeklyCommits: any;
   private showReadMe: boolean = false;
+  private showCommits: boolean = false;
   private expanded: boolean = false;
   constructor(private githubApiService: GithubApiService) { }
 
@@ -24,8 +25,8 @@ export class ResultCardComponent implements OnInit {
   }
 
   loadReadme() {
-    this.showReadMe = true;
     this.githubApiService.getReadmeHTML(this.repository.full_name).then((res) => {
+      this.showReadMe = true;
       this.readme = res._body;
     });
 
@@ -34,6 +35,7 @@ export class ResultCardComponent implements OnInit {
   loadCommitStats() {
     this.githubApiService.getCommitActivity(this.repository.full_name).then((res) => {
       if ((res || {}).length) {
+        this.showCommits = true;
         this.weeklyCommits = res;
       }
     });

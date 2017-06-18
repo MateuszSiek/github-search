@@ -1,8 +1,28 @@
-.page-label {
-  margin: 5px;
-  background: red;
+.component-container {
+  text-align: center;
+  font-size: 0px;
 }
 
-.page-label.active {
-  background: blue;
+.component-container button {
+  font-size: 1rem;
+  padding: 6px;
+  border: solid 1px #c7cbd0;
+  background: #fafafa;
+  color: #666;
+  min-width: 2rem;
+}
+
+.component-container button:first-of-type {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.component-container button:last-of-type {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.component-container button.active {
+  background: #3488d2;
+  color: white;
 }

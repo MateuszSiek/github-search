@@ -68,7 +68,7 @@ export class GithubApiService {
           return new Promise((resolve, reject) => {
             setTimeout(() => {
               resolve(this.getCommitActivity(repositoryFullName));
-            }, 200);
+            }, 1000);
           })
         }
         else {

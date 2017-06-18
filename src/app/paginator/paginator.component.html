@@ -1,9 +1,15 @@
-<div>
-  <button href="#" (click)="changePageTo(1)" [disabled]="currentPage === 1">first</button>
-  <button href="#" (click)="changePageTo(currentPage-1)" [disabled]="currentPage === 1">prev</button>
-  <span>
-  <button href="#" [class.active]="currentPage === page" class="page-label" *ngFor="let page of visiblePages" (click)="changePageTo(page)"> {{page}} </button>
-</span>
-  <button href="#" (click)="changePageTo(currentPage+1)" [disabled]="currentPage === availablePagesCount">next</button>
-  <button href="#" (click)="changePageTo(availablePagesCount)" [disabled]="currentPage === availablePagesCount">last</button>
+<div class="component-container">
+  <button (click)="changePageTo(1)" [disabled]="currentPage === 1">
+    <i class="fa fa-backward" aria-hidden="true"></i>
+  </button>
+  <button (click)="changePageTo(currentPage-1)" [disabled]="currentPage === 1">
+    <i class="fa fa-step-backward" aria-hidden="true"></i>
+  </button>
+  <button [class.active]="currentPage === page" class="page-label" *ngFor="let page of visiblePages" (click)="changePageTo(page)">{{page}}</button>
+  <button (click)="changePageTo(currentPage+1)" [disabled]="currentPage === availablePagesCount">
+    <i class="fa fa-step-forward" aria-hidden="true"></i>
+  </button>
+  <button (click)="changePageTo(availablePagesCount)" [disabled]="currentPage === availablePagesCount">
+    <i class="fa fa-forward" aria-hidden="true"></i>
+  </button>
 </div>

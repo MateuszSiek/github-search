@@ -1,4 +1,4 @@
-<div>
-  <input type="text" [value]="query" [formControl]="queryControl" (keyup.enter)="fireQueryChangeEvent()">
-  <button *ngIf="searchInputMethod==='manual'" (click)="fireQueryChangeEvent()">search</button>
+<div class="component-container">
+  <input type="text" [value]="query" [formControl]="queryControl" (keyup.enter)="fireQueryChangeEvent()" placeholder="Search repositories">
+  <button *ngIf="searchInputMethod==='manual'" (click)="fireQueryChangeEvent()">SEARCH</button>
 </div>

@@ -22,7 +22,6 @@ import { GlobalConfig } from "../shared/global-config"
   styleUrls: ['./search-page.component.css']
 })
 export class SearchPageComponent implements OnInit {
-
   public searchResult: SearchResult;
   public repositories: Repository[];
   public repositoriesCount: number = 0;
@@ -34,14 +33,18 @@ export class SearchPageComponent implements OnInit {
   private searchPage: number = 1;
   private queryData: QueryData = { query: '', sort: null, page: 1 };
   private searchTerms = new Subject<QueryData>();
-
+  private loadingData: boolean = false;
   constructor(private githubApiService: GithubApiService) { }
 
   public ngOnInit(): void {
     console.log(this);
     this.searchTerms
-      .switchMap((queryData: QueryData) => this.githubApiService.getRepositories(queryData))
+      .switchMap((queryData: QueryData) => {
+        this.loadingData = true;
+        return this.githubApiService.getRepositories(queryData);
+      })
       .subscribe((searchResult: SearchResult) => {
+        this.loadingData = false;
         if (typeof (searchResult.error) === 'object') {
           this.handleSearchError(searchResult.error);
         }
@@ -87,4 +90,19 @@ export class SearchPageComponent implements OnInit {
     this.repositoriesCount = Math.min(searchResult.total_count, GlobalConfig.MAX_REPOSITORIES || 0);
   }
 
+  private noResultFound(): boolean {
+    let repos = this.repositories;
+    if (Array.isArray(repos) && (repos || []).length === 0) {
+      return true;
+    }
+    return false;
+  }
+
+  private beforeFirstQuery(): boolean {
+    let repos = this.repositories;
+    if (!Array.isArray(repos)) {
+      return true;
+    }
+    return false;
+  }
 }

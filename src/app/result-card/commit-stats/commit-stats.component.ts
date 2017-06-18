@@ -11,11 +11,11 @@ import { CommitActivity, DailyCommitData } from "../models/commit-activity";
 })
 export class CommitStatsComponent implements OnInit, OnDestroy {
   @ViewChild('chartdiv') private chartdiv;
-  @Input() weeklyCommits: CommitActivity[];
+  @Input() public weeklyCommits: CommitActivity[];
   private chart: any;
   constructor(private amChartsService: AmChartsService) { }
 
-  getDailyCommitsData(weeklyCommits): DailyCommitData[] {
+  private getDailyCommitsData(weeklyCommits): DailyCommitData[] {
     let dailyCommits: DailyCommitData[] = [];
     weeklyCommits.forEach((week) => {
       let days = week.days;
@@ -28,12 +28,13 @@ export class CommitStatsComponent implements OnInit, OnDestroy {
     return dailyCommits;
   }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     let dailyCommitsData = this.getDailyCommitsData(this.weeklyCommits);
     this.renderChart(dailyCommitsData);
   }
 
-  renderChart(data: DailyCommitData[]): void {
+  // temporary solution
+  private renderChart(data: DailyCommitData[]): void {
     this.chart = this.amChartsService.makeChart(this.chartdiv.nativeElement, {
       "dataProvider": data,
       "type": "serial",
@@ -41,7 +42,6 @@ export class CommitStatsComponent implements OnInit, OnDestroy {
       "marginRight": 20,
       "marginLeft": 20,
       "autoMarginOffset": 20,
-      "mouseWheelZoomEnabled": true,
       "dataDateFormat": "YYYY-MM-DD",
       "valueAxes": [{
         "id": "v1",
@@ -93,8 +93,7 @@ export class CommitStatsComponent implements OnInit, OnDestroy {
         "cursorAlpha": 1,
         "cursorColor": "#258cbb",
         "limitToGraph": "g1",
-        "valueLineAlpha": 0.2,
-        "valueZoomable": true
+        "valueLineAlpha": 0.2
       },
       "valueScrollbar": {
         "oppositeAxis": false,

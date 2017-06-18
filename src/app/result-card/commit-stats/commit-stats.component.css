@@ -1,0 +1,10 @@
+.component-container {
+  padding: 1em;
+  border-bottom: 1px solid #676767;
+}
+
+.component-container h3 {
+  background: #3488d2;
+  text-align: center;
+  color: white;
+}

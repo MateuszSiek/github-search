@@ -9,12 +9,12 @@ import { OwnerDetailsComponent } from './owner-details/owner-details.component';
 import { RepositoryReadmeComponent } from './repository-readme/repository-readme.component';
 import { CommitStatsComponent } from './commit-stats/commit-stats.component';
 
-
-import { DateSincePipe } from "../shared/pipes/date-since.pipe";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     AmChartsModule
   ],
   declarations: [
@@ -23,10 +23,8 @@ import { DateSincePipe } from "../shared/pipes/date-since.pipe";
     RepositoryDetailsComponent,
     OwnerDetailsComponent,
     RepositoryReadmeComponent,
-    CommitStatsComponent,
-    DateSincePipe
+    CommitStatsComponent
   ],
-  providers:[DateSincePipe],
   exports: [ResultCardComponent]
 })
 export class ResultCardModule { }

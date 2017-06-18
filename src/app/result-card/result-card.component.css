@@ -1,26 +1,31 @@
-.result-card {
-  margin: 1em;
-  border: 2px solid black;
+.component-container {
+  border-top: solid 3px #00c0ef;
+  border-radius: 3px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
 }
 
-.result-card .repository-data {
-  padding: 2em;
-}
-
-.result-card .expand-button {
-  width: 100%;
-}
-
-.result-card .repository-extended-info {
-  padding: 2em;
-  max-height: 50vH;
-  overflow: auto;
-}
-
-.grid .row {
+.component-container .repository-data .additional-descrition {
   display: flex;
 }
 
-.row .col.stats {
+.component-container .repository-data .additional-descrition .stats {
   flex: 1;
+}
+
+.component-container .repository-data .additional-descrition .owner {
+  width: 120px;
+}
+
+.component-container .expand-button {
+  width: 100%;
+  border: none;
+  background: #00c0ef;
+  color: white;
+}
+
+.component-container .repository-extended-info {
+  box-shadow: inset 0px 0px 2px 2px #c7c7c7;
+  background: #f9f9f9;
+  border: 4px solid white;
 }
