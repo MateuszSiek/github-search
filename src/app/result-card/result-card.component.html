@@ -1,3 +1,20 @@
-<app-general-description [repository]="repository"></app-general-description>
-<app-repository-details [repository]="repository"></app-repository-details>
-<app-owner-details [owner]="repository.owner"></app-owner-details>
+<div class="result-card">
+  <div class="repository-data grid">
+    <div class="row">
+      <app-general-description [repository]="repository"></app-general-description>
+    </div>
+    <div class="row">
+      <span class="col">
+        <app-owner-details [owner]="repository.owner"></app-owner-details>
+      </span>
+      <span class="col stats">
+          <app-repository-details [repository]="repository"></app-repository-details>
+        </span>
+    </div>
+  </div>
+  <div class="repository-extended-info" *ngIf="(weeklyCommits || showReadMe) && expanded">
+    <app-commit-stats *ngIf="weeklyCommits" [weeklyCommits]="weeklyCommits"></app-commit-stats>
+    <app-repository-readme *ngIf="showReadMe" [readme]="readme"></app-repository-readme>
+  </div>
+  <button class="expand-button" (click)="toggleDetailData()">Expand</button>
+</div>

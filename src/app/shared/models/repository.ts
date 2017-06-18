@@ -16,4 +16,7 @@ export interface Repository {
 
   has_issues: boolean;
   open_issues_count: number;
+
+  created_at: number;
+  updated_at: number;
 }

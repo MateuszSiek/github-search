@@ -1,0 +1,26 @@
+.result-card {
+  margin: 1em;
+  border: 2px solid black;
+}
+
+.result-card .repository-data {
+  padding: 2em;
+}
+
+.result-card .expand-button {
+  width: 100%;
+}
+
+.result-card .repository-extended-info {
+  padding: 2em;
+  max-height: 50vH;
+  overflow: auto;
+}
+
+.grid .row {
+  display: flex;
+}
+
+.row .col.stats {
+  flex: 1;
+}

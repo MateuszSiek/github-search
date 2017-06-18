@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 
-import { SearchRepositoryService } from "./services/search-repository.service";
+import { GithubApiService } from "./services/github-api.service";
 
 import { SortObject } from "./search/models/sort";
 
@@ -34,13 +34,13 @@ export class AppComponent {
   private queryData: QueryData = { query: '', sort: null, page: 1 };
   private searchTerms = new Subject<QueryData>();
 
-  constructor(private searchRepositoryService: SearchRepositoryService) { }
+  constructor(private githubApiService: GithubApiService) { }
 
   public ngOnInit(): void {
+    console.log(this);
     this.searchTerms
-      .switchMap((queryData: QueryData) => this.searchRepositoryService.getRepositories(queryData))
+      .switchMap((queryData: QueryData) => this.githubApiService.getRepositories(queryData))
       .subscribe((searchResult: SearchResult) => {
-        console.log(searchResult);
         if (typeof (searchResult.error) === 'object') {
           this.handleSearchError(searchResult.error);
         }

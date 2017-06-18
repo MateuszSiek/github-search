@@ -1,10 +1,13 @@
 <div>
   <div class="header">
     <h2>
-      {{repository?.title}}
+      {{repository?.name}}
     </h2>
-    <span *ngIf="date">
-      Created: {{repository?.date | date:'yMMMd'}}
+    <span *ngIf="repository?.created_at">
+      Created: {{repository?.created_at | date:'yMMMd'}}
+    </span>
+    <span *ngIf="repository?.updated_at">
+      Updated: {{repository?.updated_at | dateSince:'string'}}
     </span>
   </div>
   <div class="body">
