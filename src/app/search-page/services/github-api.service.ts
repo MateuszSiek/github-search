@@ -6,12 +6,12 @@ import { Headers, RequestOptions } from '@angular/http';
 import { Observable }       from 'rxjs/Observable';
 
 
-import { SearchResult } from "../shared/models/search-result";
-import { RequestError } from "../shared/models/request-error";
+import { SearchResult } from "../models/search-result";
+import { RequestError } from "../models/request-error";
 
 import { QueryData } from "../search/models/query-data";
 
-import { GlobalConfig } from "../shared/global-config"
+import { GlobalConfig } from "../../shared/global-config"
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/observable/of';

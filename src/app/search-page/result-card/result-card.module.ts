@@ -9,7 +9,7 @@ import { OwnerDetailsComponent } from './owner-details/owner-details.component';
 import { RepositoryReadmeComponent } from './repository-readme/repository-readme.component';
 import { CommitStatsComponent } from './commit-stats/commit-stats.component';
 
-import { SharedModule } from "../shared/shared.module";
+import { SharedModule } from "../../shared/shared.module";
 
 @NgModule({
   imports: [

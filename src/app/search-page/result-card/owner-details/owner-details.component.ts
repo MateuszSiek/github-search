@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import {Owner} from "../../shared/models/owner";
+import {Owner} from "../../models/owner";
 
 @Component({
   selector: 'app-owner-details',

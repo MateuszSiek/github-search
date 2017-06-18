@@ -1,4 +1,4 @@
-import { SortObject } from "../../search/models/sort";
+import { SortObject } from "../search/models/sort";
 
 export interface QueryData {
   query: string;

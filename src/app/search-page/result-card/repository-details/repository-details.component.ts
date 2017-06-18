@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import {Repository} from "../../shared/models/repository";
+import {Repository} from "../../models/repository";
 
 @Component({
   selector: 'app-repository-details',

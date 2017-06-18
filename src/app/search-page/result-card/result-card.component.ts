@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
-import {Repository} from "../shared/models/repository";
+import {Repository} from "../models/repository";
 
 import { GithubApiService } from "../services/github-api.service";
 
