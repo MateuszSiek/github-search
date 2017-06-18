@@ -1,0 +1,17 @@
+.component-container {
+  position: relative;
+}
+
+.component-container h1 {
+  margin: 0;
+  padding: 10px;
+  padding-top: 0em;
+  text-align: center;
+  background: #3488d2;
+  border-bottom: solid 2px #0a7186;
+  color: white;
+}
+
+.component-container h1 span {
+  color: black;
+}

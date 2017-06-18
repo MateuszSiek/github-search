@@ -3,4 +3,6 @@
 html, body {
   font-family: 'Source Sans Pro', sans-serif;
   background: #ecf0f5;
+  margin: 0px;
+  height: 100%;
 }

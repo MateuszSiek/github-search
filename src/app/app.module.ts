@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { CoreModule } from "./core/core.module";
 import { SharedModule } from "./shared/shared.module";
 import { SearchPageModule } from "./search-page/search-page.module";
 import { AboutPageModule } from "./about-page/about-page.module";
@@ -27,6 +28,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpModule,
     AppRoutingModule,
+    CoreModule,
     SearchPageModule,
     AboutPageModule
   ],

@@ -1,0 +1,14 @@
+.component-container {
+  text-align: center;
+}
+
+img {
+  width: 100px;
+  border-radius: 50%;
+  border: 2px #c3c3c3 solid;
+  background: white;
+}
+
+.author h2, .author h3 {
+  margin: 0px;
+}

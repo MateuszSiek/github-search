@@ -1,0 +1,15 @@
+.component-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.component-container .body {
+  max-width: 800px;
+  margin: auto;
+}
+
+.body {
+  flex: 1;
+  padding: 1em 10px;
+}
