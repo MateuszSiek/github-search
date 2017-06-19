@@ -1,24 +1,16 @@
-import { Injectable }              from '@angular/core';
-import { Http, Response }          from '@angular/http';
-import { URLSearchParams } from '@angular/http';
-import { Headers, RequestOptions } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
 
-import { Observable }       from 'rxjs/Observable';
-
+import { Observable } from 'rxjs/Observable';
 
 import { SearchResult } from "../models/search-result";
 import { RequestError } from "../models/request-error";
 
 import { QueryData } from "../search/models/query-data";
-import { CommitActivity } from "../result-card/models/commit-activity";
 
 import { GlobalConfig } from "../../shared/global-config"
 
 import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class GithubApiService {
@@ -26,8 +18,7 @@ export class GithubApiService {
   headers: Headers = new Headers({ 'Content-Type': 'application/json' });
   constructor(private http: Http) { }
 
-  getRepositories({query, sort, page}): Observable<SearchResult> {
-
+  public getRepositories({query, sort, page}): Observable<SearchResult> {
     if (query.length <= 0) {
       const emptyResponse: SearchResult = this.getEmptySearchResultObject();
       return Observable.of<SearchResult>(emptyResponse);
@@ -46,7 +37,7 @@ export class GithubApiService {
       .catch((error: Response) => this.handleSearchError(error));
   }
 
-  getReadmeHTML(repositoryFullName: string): Promise<any> {
+  public getReadmeHTML(repositoryFullName: string): Promise<any> {
     const headers = new Headers(this.headers);
     headers.append('Accept', 'application/vnd.github.html')
 
@@ -57,7 +48,7 @@ export class GithubApiService {
       .catch((error: Response) => this.handleReadmeError(error));
   }
 
-  getCommitActivity(repositoryFullName: string): Promise<any> {
+  public getCommitActivity(repositoryFullName: string): Promise<any> {
     const headers = this.headers;
     const search = this.urlParams;
     const options = new RequestOptions({ headers, search });
@@ -80,12 +71,17 @@ export class GithubApiService {
       .catch((error: Response) => this.getErrorData(error));
   }
 
-
-
   private handleSearchError(error: Response | any) {
     const emptyResponse: SearchResult = this.getEmptySearchResultObject();
     emptyResponse.error = this.getErrorData(error);
     return Observable.of<SearchResult>(emptyResponse);
+  }
+
+  private getEmptySearchResultObject(): SearchResult {
+    return {
+      total_count: 0,
+      items: []
+    }
   }
 
   private handleReadmeError(error: Response | any) {
@@ -101,12 +97,4 @@ export class GithubApiService {
       msg: errMsg
     }
   }
-
-  private getEmptySearchResultObject(): SearchResult {
-    return {
-      total_count: 0,
-      items: []
-    }
-  }
-
 }

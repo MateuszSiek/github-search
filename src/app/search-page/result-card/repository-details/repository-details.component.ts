@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import {Repository} from "../../models/repository";
 
@@ -7,11 +7,6 @@ import {Repository} from "../../models/repository";
   templateUrl: './repository-details.component.html',
   styleUrls: ['./repository-details.component.css']
 })
-export class RepositoryDetailsComponent implements OnInit {
+export class RepositoryDetailsComponent{
   @Input() repository: Repository;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

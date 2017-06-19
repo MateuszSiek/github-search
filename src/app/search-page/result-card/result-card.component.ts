@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import {Repository} from "../models/repository";
 
@@ -10,7 +10,7 @@ import { GithubApiService } from "../services/github-api.service";
   templateUrl: './result-card.component.html',
   styleUrls: ['./result-card.component.css']
 })
-export class ResultCardComponent implements OnInit {
+export class ResultCardComponent {
   @Input() repository: Repository;
   private readme: string;
   private weeklyCommits: any;
@@ -19,32 +19,7 @@ export class ResultCardComponent implements OnInit {
   private expanded: boolean = false;
   constructor(private githubApiService: GithubApiService) { }
 
-
-  ngOnInit() {
-    // console.log(this);
-  }
-
-  loadReadme() {
-    this.githubApiService.getReadmeHTML(this.repository.full_name).then((res) => {
-      console.log(res);
-      this.showReadMe = true;
-      this.readme = res;
-    });
-
-  }
-
-  loadCommitStats() {
-    this.githubApiService.getCommitActivity(this.repository.full_name).then((res) => {
-      console.log(res)
-      this.showCommits = true;
-      if ((res || {}).length) {
-        this.weeklyCommits = res;
-      }
-    });
-  }
-
-
-  toggleDetailData() {
+  public toggleDetailData() {
     if (this.expanded) {
       this.expanded = false;
     }
@@ -57,6 +32,23 @@ export class ResultCardComponent implements OnInit {
         this.loadCommitStats();
       }
     }
+  }
+
+  private loadReadme() {
+    this.githubApiService.getReadmeHTML(this.repository.full_name).then((res) => {
+      this.showReadMe = true;
+      this.readme = res;
+    });
+
+  }
+
+  private loadCommitStats() {
+    this.githubApiService.getCommitActivity(this.repository.full_name).then((res) => {
+      this.showCommits = true;
+      if ((res || {}).length) {
+        this.weeklyCommits = res;
+      }
+    });
   }
 
 }

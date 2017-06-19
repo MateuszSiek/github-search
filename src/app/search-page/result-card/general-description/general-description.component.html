@@ -1,20 +1,18 @@
 <div class="component-container">
   <div class="header">
     <a [href]="repository.html_url" target="_blank">
-    <h2>
+      <h2>
       {{repository?.full_name}}
     </h2>
-  </a>
+    </a>
     <span class="created-at">
       Created: {{repository?.created_at | date:'yMMMd'}}
     </span>
     <span class="updated-at">
-      Updated: {{repository?.updated_at | dateSince:'string'}}
+      Updated: {{repository?.updated_at | dateSince}}
     </span>
   </div>
   <div class="body">
-    <!-- <span> -->
-      {{repository?.description}}
-    <!-- </span> -->
+    {{repository?.description}}
   </div>
 </div>

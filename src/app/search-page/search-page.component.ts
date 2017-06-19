@@ -1,6 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 
-import { Observable }        from 'rxjs/Observable';
 import { Subject }           from 'rxjs/Subject';
 
 import { GithubApiService } from "./services/github-api.service";
@@ -37,7 +36,6 @@ export class SearchPageComponent implements OnInit {
   constructor(private githubApiService: GithubApiService) { }
 
   public ngOnInit(): void {
-    console.log(this);
     this.searchTerms
       .switchMap((queryData: QueryData) => {
         this.loadingData = true;
@@ -45,19 +43,12 @@ export class SearchPageComponent implements OnInit {
       })
       .subscribe((searchResult: SearchResult) => {
         this.loadingData = false;
-        if (typeof (searchResult.error) === 'object') {
-          this.handleSearchError(searchResult.error);
-        }
         this.setSearchResult(searchResult)
       })
   }
 
   private displayResults(): boolean {
     return (this.repositories || []).length > 0;
-  }
-
-  private handleSearchError(searchError: RequestError): void {
-
   }
 
   private updateSearchQuery(query: string): void {
@@ -84,10 +75,9 @@ export class SearchPageComponent implements OnInit {
   }
 
   private setSearchResult(searchResult: SearchResult): void {
-    console.log(searchResult);
     this.searchResult = searchResult;
     this.repositories = searchResult.items || [];
-    this.repositoriesCount = Math.min(searchResult.total_count, GlobalConfig.MAX_REPOSITORIES || 0);
+    this.repositoriesCount = Math.min(searchResult.total_count, GlobalConfig.MAX_REPOSITORIES);
   }
 
   private noResultFound(): boolean {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import {Repository} from "../../models/repository";
 
@@ -7,14 +7,6 @@ import {Repository} from "../../models/repository";
   templateUrl: './general-description.component.html',
   styleUrls: ['./general-description.component.css']
 })
-export class GeneralDescriptionComponent implements OnInit {
+export class GeneralDescriptionComponent{
   @Input() repository: Repository;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  fromLastUpdate() {
-
-  }
 }

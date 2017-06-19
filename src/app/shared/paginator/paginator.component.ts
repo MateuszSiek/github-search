@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
 const APPENDED_PAGE_LABELS_COUNT = 3;
 
@@ -9,7 +9,7 @@ const APPENDED_PAGE_LABELS_COUNT = 3;
 })
 export class PaginatorComponent implements OnChanges {
   @Input() public recordsCount: number = 0;
-  @Input() public pageSize: number = 100;
+  @Input() public pageSize: number = 10;
   @Output() public pageChange: EventEmitter<number> = new EventEmitter<number>();
 
   private availablePages: number[];

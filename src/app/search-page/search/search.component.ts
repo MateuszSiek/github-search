@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { SortInputField, SortObject, Direction } from "./models/sort";
-import { QueryData } from "./models/query-data";
+import { SortInputField, SortObject } from "./models/sort";
 
 @Component({
   selector: 'app-search',
@@ -17,8 +16,6 @@ export class SearchComponent {
 
   private query: string = '';
   private sort: SortObject;
-
-  constructor() { console.log(this); }
 
   private fireQueryChange() {
     this.queryChange.emit(this.query);

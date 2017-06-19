@@ -1,15 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-// interface InputFormat: ('date' | 'string');
 type InputFormat = ('date' | 'string');
 type OutputFormat = ('default' | 'seconds' | 'minutes' | 'hours' | 'days' | 'weeks' | 'months' | 'years');
 
 @Pipe({ name: 'dateSince' })
 export class DateSincePipe implements PipeTransform {
 
-  transform(value: any, inputFormat: InputFormat = 'date', outputFormat: OutputFormat = 'default'): string {
-    let dateTimestamp: number = Date.parse(value);//inputFormat === 'string' ? new Date(value) : value;
-    let currentTimestamp: number = (new Date()).getTime();//inputFormat === 'string' ? new Date(value) : value;
+  public transform(value: any, outputFormat: OutputFormat = 'default'): string {
+    const dateTimestamp: number = Date.parse(value);
+    const currentTimestamp: number = (new Date()).getTime();
     if (isNaN(dateTimestamp) || dateTimestamp > currentTimestamp) {
       return '';
     }
@@ -18,8 +17,8 @@ export class DateSincePipe implements PipeTransform {
     return this.getFormatedDateSinceString(diffMs, outputFormat);
   }
 
-  getFormatedDateSinceString(diffMs: number, outputFormat: OutputFormat): string {
-    let numberOfSince = this.getTimeSince(diffMs);
+  private getFormatedDateSinceString(diffMs: number, outputFormat: OutputFormat): string {
+    const numberOfSince = this.getTimeSince(diffMs);
     let formatedString = '';
     if (outputFormat === 'default') {
       formatedString = this.getDefaultDateSinceString(numberOfSince);
@@ -40,7 +39,7 @@ export class DateSincePipe implements PipeTransform {
     return formatedString;
   }
 
-  getDefaultDateSinceString({ seconds, minutes, hours, days, weeks, months, years }): string {
+  private getDefaultDateSinceString({ seconds, minutes, hours, days, weeks, months, years }): string {
     let returnString: string = '';
     let diffValue: number = 0;
 
@@ -77,7 +76,7 @@ export class DateSincePipe implements PipeTransform {
     return returnString
   }
 
-  getTimeSince(diffMs: number): any {
+  private getTimeSince(diffMs: number): any {
     let seconds = Math.round(diffMs / 1000);
     let minutes = Math.round(seconds / 60);
     let hours = Math.round(minutes / 60);

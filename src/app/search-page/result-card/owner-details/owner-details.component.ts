@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import {Owner} from "../../models/owner";
 
@@ -7,11 +7,6 @@ import {Owner} from "../../models/owner";
   templateUrl: './owner-details.component.html',
   styleUrls: ['./owner-details.component.css']
 })
-export class OwnerDetailsComponent implements OnInit {
+export class OwnerDetailsComponent {
   @Input() owner: Owner;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }
