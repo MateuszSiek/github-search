@@ -1,5 +1,12 @@
 # http://githubsearch.msiek.com/
 
+# TODO
+- Finish "about" page
+- Implement sorting(component already in place)
+- Testing
+- Documentation
+- Code refactoring
+
 # GithubSearch
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
