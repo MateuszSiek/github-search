@@ -13,7 +13,7 @@ import 'rxjs/add/observable/fromEvent';
 })
 export class InputBoxComponent implements OnInit {
   @Input() searchInputMethod: 'manual' | 'auto' = 'manual';
-  @Input() debounceTime: number = 200;
+  @Input() debounceTime: number = 400;
   @Output() queryChange: EventEmitter<string> = new EventEmitter<string>();
 
   private query: string = '';

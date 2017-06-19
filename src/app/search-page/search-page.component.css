@@ -1,3 +1,7 @@
+.component-container {
+  padding: 1em;
+}
+
 .component-container .result-card {
   margin-bottom: 1.8em;
 }

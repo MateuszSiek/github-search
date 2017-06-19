@@ -11,7 +11,6 @@ import { QueryData } from "./models/query-data";
 export class SearchComponent {
   @Input() public queryFieldName: string = 'q';
   @Input() public searchInputMethod: 'manual' | 'auto' = 'manual';
-  @Input() public debounceTime: number = 200;
   @Input() public sortFields: SortInputField[];
   @Output() public queryChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() public sortChange: EventEmitter<SortObject> = new EventEmitter<SortObject>();

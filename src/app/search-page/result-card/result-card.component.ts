@@ -21,21 +21,23 @@ export class ResultCardComponent implements OnInit {
 
 
   ngOnInit() {
-
+    // console.log(this);
   }
 
   loadReadme() {
     this.githubApiService.getReadmeHTML(this.repository.full_name).then((res) => {
+      console.log(res);
       this.showReadMe = true;
-      this.readme = res._body;
+      this.readme = res;
     });
 
   }
 
   loadCommitStats() {
     this.githubApiService.getCommitActivity(this.repository.full_name).then((res) => {
+      console.log(res)
+      this.showCommits = true;
       if ((res || {}).length) {
-        this.showCommits = true;
         this.weeklyCommits = res;
       }
     });

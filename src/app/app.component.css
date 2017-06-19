@@ -5,11 +5,11 @@
 }
 
 .component-container .body {
+  flex: 1;
+  width: 100%;
   max-width: 800px;
   margin: auto;
 }
 
 .body {
-  flex: 1;
-  padding: 1em 10px;
 }

@@ -10,6 +10,7 @@ import { SearchResult } from "../models/search-result";
 import { RequestError } from "../models/request-error";
 
 import { QueryData } from "../search/models/query-data";
+import { CommitActivity } from "../result-card/models/commit-activity";
 
 import { GlobalConfig } from "../../shared/global-config"
 
@@ -52,8 +53,8 @@ export class GithubApiService {
     const options = new RequestOptions({ headers, search: this.urlParams });
     return this.http.get(`${GlobalConfig.GITHUB_API_URL}/repos/${repositoryFullName}/readme`, options)
       .toPromise()
-      .then((content: any) => content)
-      .catch((error: Response) => this.handleSearchError(error));
+      .then((content: any) => content._body)
+      .catch((error: Response) => this.handleReadmeError(error));
   }
 
   getCommitActivity(repositoryFullName: string): Promise<any> {
@@ -76,7 +77,7 @@ export class GithubApiService {
         }
 
       })
-      .catch((error: Response) => this.handleSearchError(error));
+      .catch((error: Response) => this.getErrorData(error));
   }
 
 
@@ -85,6 +86,10 @@ export class GithubApiService {
     const emptyResponse: SearchResult = this.getEmptySearchResultObject();
     emptyResponse.error = this.getErrorData(error);
     return Observable.of<SearchResult>(emptyResponse);
+  }
+
+  private handleReadmeError(error: Response | any) {
+    return '<p>Readme not found!</p>';
   }
 
   private getErrorData(error: Response | any): RequestError {
@@ -103,4 +108,5 @@ export class GithubApiService {
       items: []
     }
   }
+
 }

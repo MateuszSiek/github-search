@@ -29,8 +29,10 @@ export class CommitStatsComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    let dailyCommitsData = this.getDailyCommitsData(this.weeklyCommits);
-    this.renderChart(dailyCommitsData);
+    if (this.weeklyCommits) {
+      let dailyCommitsData = this.getDailyCommitsData(this.weeklyCommits);
+      this.renderChart(dailyCommitsData);
+    }
   }
 
   // temporary solution
