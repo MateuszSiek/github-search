@@ -1,0 +1,11 @@
+.component-container {
+  background: #3488d2;
+  color: white;
+  text-align: center;
+  padding: 0.8em;
+}
+
+.component-container a {
+  text-decoration: none;
+  color: #fffaa7;
+}

@@ -1,0 +1,25 @@
+.component-container {
+  padding: 1em;
+}
+
+.component-container .result-card {
+  margin-bottom: 1.8em;
+}
+
+.component-container .result-card:last-of-type {
+  margin-bottom: 10px;
+}
+
+.info {
+  text-align: center;
+  font-size: 2em;
+  margin: 0.5em;
+}
+
+.start-searching {
+  color: #3488d2;
+}
+
+.empty-search {
+  color: #dd4b39;
+}

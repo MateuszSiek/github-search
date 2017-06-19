@@ -1,0 +1,24 @@
+<div class="component-container">
+  <div class="repository-data">
+    <div class="general-descrition">
+      <app-general-description [repository]="repository"></app-general-description>
+    </div>
+    <div class="additional-descrition">
+      <span class="owner">
+        <app-owner-details [owner]="repository.owner"></app-owner-details>
+      </span>
+      <span class="stats">
+          <app-repository-details [repository]="repository"></app-repository-details>
+        </span>
+    </div>
+  </div>
+  <div class="repository-extended-info" *ngIf="expanded">
+    <app-loading *ngIf="!showCommits || !showReadMe"> </app-loading>
+    <app-commit-stats *ngIf="showCommits" [weeklyCommits]="weeklyCommits"></app-commit-stats>
+    <app-repository-readme *ngIf="showReadMe" [readme]="readme"> </app-repository-readme>
+  </div>
+  <button class="expand-button" (click)="toggleDetailData()">
+    <i *ngIf="expanded" class="fa fa-chevron-up" aria-hidden="true"></i>
+    <i *ngIf="!expanded"  class="fa fa-chevron-down" aria-hidden="true"></i>
+  </button>
+</div>

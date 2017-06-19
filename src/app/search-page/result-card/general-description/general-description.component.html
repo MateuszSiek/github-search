@@ -1,0 +1,18 @@
+<div class="component-container">
+  <div class="header">
+    <a [href]="repository.html_url" target="_blank">
+      <h2>
+      {{repository?.full_name}}
+    </h2>
+    </a>
+    <span class="created-at">
+      Created: {{repository?.created_at | date:'yMMMd'}}
+    </span>
+    <span class="updated-at">
+      Updated: {{repository?.updated_at | dateSince}}
+    </span>
+  </div>
+  <div class="body">
+    {{repository?.description}}
+  </div>
+</div>

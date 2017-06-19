@@ -1,0 +1,5 @@
+<div class="component-container">
+  <h3>Commits per day</h3>
+  <p *ngIf="!weeklyCommits">No commit activity</p>
+  <div [style.width.%]="100" [style.height.px]="300" #chartdiv></div>
+</div>

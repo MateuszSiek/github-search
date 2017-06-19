@@ -1,0 +1,21 @@
+<div class="component-container">
+  <table>
+    <tr *ngIf="repository.language">
+      <th colspan="3" class="language"><i class="fa fa-code"></i> <span class="value">{{repository.language}}</span></th>
+    </tr>
+    <tr>
+      <td class="stargazers">
+        <i class="fa fa-star"></i> <span class="value">{{repository.stargazers_count}}</span>
+        <div class="desc">stargezers</div>
+      </td>
+      <td class="forks">
+        <i class="fa fa-code-fork"> </i> <span class="value">{{repository.forks_count}}</span>
+        <div class="desc">forks</div>
+      </td>
+      <td class="issues">
+        <i class="fa fa-exclamation-circle"></i> <span class="value">{{repository.open_issues}}</span>
+        <div class="desc"> issues</div>
+      </td>
+    </tr>
+  </table>
+</div>

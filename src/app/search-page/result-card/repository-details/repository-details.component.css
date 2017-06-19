@@ -1,0 +1,39 @@
+.component-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.component-container table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  height: 100%;
+  width: 100%;
+}
+
+.component-container {
+  font-size: 1.5em;
+}
+
+.component-container table .language {
+  color: #00c0ef;
+}
+
+.component-container table .stargazers {
+  color: #f39c12;
+}
+
+.component-container table .forks {
+  color: #00a65a;
+}
+
+.component-container table .issues {
+  color: #dd4b39;
+}
+
+.component-container table .value {}
+
+.component-container table .desc {
+  font-size: 0.6em;
+}

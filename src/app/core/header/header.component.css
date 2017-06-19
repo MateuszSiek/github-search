@@ -1,0 +1,23 @@
+.component-container {
+  position: relative;
+}
+
+@media only screen and (max-width: 400px) {
+  .component-container {
+    font-size: 10px;
+  }
+}
+
+.component-container h1 {
+  margin: 0;
+  padding: 10px;
+  padding-top: 0em;
+  text-align: center;
+  background: #3488d2;
+  border-bottom: solid 2px #0a7186;
+  color: white;
+}
+
+.component-container h1 span {
+  color: black;
+}

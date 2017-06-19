@@ -1,0 +1,8 @@
+<div class="component-container">
+  <img [attr.src]="owner.avatar_url" [attr.alt]="owner.login" height="60" width="60">
+  <div>
+    <a [href]="owner.html_url" target="_blank">
+      {{owner.login}}
+    </a>
+  </div>
+</div>

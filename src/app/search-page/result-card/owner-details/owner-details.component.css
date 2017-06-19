@@ -1,0 +1,24 @@
+.component-container {
+  text-align: center;
+  padding: 0.5em 1em;
+}
+
+.component-container div {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.component-container div a {
+  color: #387dec;
+  text-decoration: none;
+}
+
+.component-container div a:hover {
+  color: #1b6aea;
+}
+
+.component-container img {
+  background: white;
+  border-radius: 50%;
+  border: 1px solid #a99c9c;
+}

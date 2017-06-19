@@ -1,0 +1,4 @@
+<div class="component-container">
+  <input type="text" [value]="query" [formControl]="queryControl" (keyup.enter)="fireQueryChangeEvent()" placeholder="Start typing to search">
+  <button (click)="fireQueryChangeEvent()">SEARCH</button>
+</div>

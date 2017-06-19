@@ -1,0 +1,18 @@
+<div class="component-container">
+  <app-search (queryChange)="updateSearchQuery($event)" (sortChange)="updateSearchSort($event)" [searchInputMethod]="searchInputMethod"></app-search>
+  <app-loading *ngIf="loadingData"> </app-loading>
+  <div *ngIf="displayResults()">
+    <div class="result-card" *ngFor="let repository of repositories">
+      <app-result-card [repository]="repository"></app-result-card>
+    </div>
+    <app-paginator [recordsCount]="repositoriesCount" [pageSize]="10" (pageChange)="setPage($event)"></app-paginator>
+  </div>
+  <div *ngIf="!loadingData">
+    <div class="empty-search info" *ngIf="noResultFound()">
+      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>No result found, try different query
+    </div>
+    <div class="start-searching info" *ngIf="beforeFirstQuery()">
+      <i class="fa fa-search" aria-hidden="true"></i>Use search box to find github repositories!
+    </div>
+  </div>
+</div>
