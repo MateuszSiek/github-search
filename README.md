@@ -1,13 +1,7 @@
-# http://githubsearch.msiek.com/
-
-# TODO
-- Finish "about" page
-- Implement sorting(component already in place)
-- Testing
-- Documentation
-- Code refactoring
 
 # GithubSearch
+
+Simple project created to try out Angular CLI and github api.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
 
